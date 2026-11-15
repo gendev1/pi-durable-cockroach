@@ -1,0 +1,45 @@
+{
+    "name": "pi-durable-cockroach",
+    "version": "0.1.0",
+    "private": true,
+    "description": "CockroachDB storage for @earendil-works/pi-durable: a port of its SQLite storage (pi v1.5.2, packages/durable/src/storage/sqlite) to CockroachDB SQL, with a lease and fencing token so one process owns a storage.",
+    "license": "MIT",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "prepack": "tsc -p tsconfig.build.json",
+        "db:up": "docker start ego-crdb || docker run -d --name ego-crdb -p 26257:26257 -p 8080:8080 cockroachdb/cockroach:latest start-single-node --insecure",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "check": "tsc --noEmit && vitest run"
+    },
+    "peerDependencies": {
+        "@earendil-works/pi-durable": "1.5.2"
+    },
+    "dependencies": {
+        "@earendil-works/chord": "1.5.2",
+        "pg": "^8.16.3"
+    },
+    "devDependencies": {
+        "@earendil-works/pi-durable": "1.5.2",
+        "@earendil-works/pi-ai": "1.5.2",
+        "@types/node": "^22.20.5",
+        "@types/pg": "^8.15.5",
+        "typescript": "7.0.2",
+        "vitest": "5.1.0"
+    },
+    "engines": {
+        "node": ">=22.19.0"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ]
+}
