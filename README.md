@@ -4,6 +4,8 @@ CockroachDB storage for [`@earendil-works/pi-durable`](https://www.npmjs.com/pac
 
 pi-durable itself is not changed or forked. The package implements its public `Storage` interface and passes its storage conformance suite.
 
+MIT licensed ([LICENSE](LICENSE)). The first copyright notice there is upstream's, for the ported storage ([earendil-works/pi](https://github.com/earendil-works/pi)); the second covers what is new here.
+
 ```ts
 import { openCockroachStorage } from "pi-durable-cockroach";
 
